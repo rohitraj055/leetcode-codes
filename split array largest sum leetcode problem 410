@@ -1,0 +1,47 @@
+// solution to leetcode problem 410 split array largest sum
+
+class Solution {
+public:
+
+    bool isValid(vector<int>& nums, int m, int maxSum) {
+    int count = 1;      
+    int currentSum = 0;
+    
+    for (int i = 0; i < nums.size(); i++) {
+        if (nums[i] > maxSum) {
+            return false;
+        }
+        
+        if (currentSum + nums[i] > maxSum) {
+            count++;
+            currentSum = nums[i];
+        } else {
+            currentSum += nums[i];
+        }
+    }
+     return count <= m;
+}
+    int splitArray(vector<int>& nums, int m)
+     {
+        int sum = 0;
+        for (int i=0; i < nums.size();i++) { sum+= nums[i];
+         }
+        int st = *max_element(nums.begin(), nums.end()), end = sum, ans = sum;
+        while(st <= end){
+            int mid = st + (end - st)/2;
+             
+             if(isValid(nums, m , mid)){
+                ans = mid;
+                end = mid - 1;
+
+             } else{
+                st = mid + 1;
+
+             }
+ 
+
+        }
+        return ans;
+        
+    }
+};

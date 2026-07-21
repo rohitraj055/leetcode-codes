@@ -1,0 +1,9 @@
+// leetcode problem 292 solution nim game 
+
+class Solution {
+public:
+    bool canWinNim(int n) {
+        return (n%4) !=0;
+        
+    }
+};

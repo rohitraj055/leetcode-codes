@@ -1,0 +1,8 @@
+// solution of divisor game leetcode problem 1025
+
+class Solution {
+public:
+    bool divisorGame(int n) {
+        return n % 2== 0;
+    }
+};

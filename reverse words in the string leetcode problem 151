@@ -1,0 +1,25 @@
+// solution of leetcode problrm 151
+// this question was quite good and made me learn to use my new stl functions 
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        string ans = "";
+        int n = s.length();
+        int i = 0;
+        
+        reverse(s.begin(), s.end());
+        for(i = 0; i < n; i++){
+            string word = "";
+            while(i < n && s[i] != ' '){
+                word += s[i];
+                i++;
+            }
+            reverse(word.begin(), word.end());
+            if(word.length() > 0){
+                ans += word + " ";
+            }
+        }
+        return ans.substr(0, ans.length() - 1);
+    }
+};

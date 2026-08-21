@@ -1,0 +1,19 @@
+//solution to leetcode problem 35
+// question was easy, i was doing a small mistake for returning -1 instead of left index because opf which i was getting error but figured it out easily 
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+    int left = 0, right = nums.size() - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] == target) return mid;
+        else if (nums[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    
+
+}
+return left;
+        
+    }
+};

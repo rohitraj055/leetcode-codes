@@ -1,0 +1,20 @@
+// solution of leetcode problem 58 length of last word
+// question was very simple , the only amazing part was to avoid trailing space
+
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int i = s.size() - 1;
+        int count = 0;
+        while (i >= 0) {
+            if (s[i] == ' ') {
+                i--;
+                if (count > 0) { break; }
+            } else {
+                count++;
+                i--;
+            }
+        }
+        return count;   // ye line add karo
+    }
+};

@@ -1,0 +1,28 @@
+// solution top leetcode problem 38 count and say
+// this question felt new to me as it introduces me to multiple functions like countAndsay it felt a quite challenging but it was worth it 
+
+class Solution {
+public:
+    string countAndSayOnce(string s) {
+        string next = "";
+        int i = 0;
+        while (i < s.size()) {
+            char currentChar = s[i];
+            int count = 0;
+            while (i < s.size() && s[i] == currentChar) {
+                count++;
+                i++;
+            }
+            next += to_string(count) + currentChar;
+        }
+        return next;
+    }
+
+    string countAndSay(int n) {
+        string result = "1";
+        for (int i = 0; i < n - 1; i++) {
+            result = countAndSayOnce(result);
+        }
+        return result;
+    }
+};

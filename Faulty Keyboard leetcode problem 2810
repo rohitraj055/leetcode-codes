@@ -1,0 +1,16 @@
+//problem was a bit mid level , i took time to solve it as it took time to click that better approch
+
+class Solution {
+public:
+    string finalString(string s) {
+        string res;
+        for(char c:s){
+    if(c=='i'){
+        reverse(res.begin(),res.end());
+    }
+    else {res.push_back(c);}
+
+}                
+return res;
+};                   
+};

@@ -1,0 +1,27 @@
+// solution of leetcode problem 917
+// the question was interesting as i learnt the better way to use if else function
+
+  class Solution {
+public:
+    string reverseOnlyLetters(string s) {
+     int st=0;
+     int end=s.size()-1;
+     while(st < end){
+        if(!isalpha(s[st])){
+            st++;
+        
+        }
+        else if(!isalpha(s[end])){
+            end--;
+        }
+        else{
+            swap(s[st],s[end]);{
+                st++;
+                end--;
+            }
+        }
+     }  
+     return s; 
+        
+    }
+};

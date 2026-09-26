@@ -1,0 +1,30 @@
+//solution to leetcode problem 54 spiral matrix
+//this question has the lengthy code but the logic not that tough, defining boundries was one of the good part
+
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        
+int m= matrix.size(), n=matrix[0].size();
+vector<int> result;
+int top=0,bottom=m-1,left=0,right=n-1;
+while(left<=right && top<=bottom){
+     {for(int i=left;i<=right;i++){ 
+        result.push_back(matrix[top][i]);}
+         top++; }
+{
+    for(int j=top;j<=bottom;j++){
+        result.push_back(matrix[j][right]);}
+         right--;}
+          if(top<=bottom){
+            for(int k=right; k>=left;k--){
+                result.push_back(matrix[bottom][k]);}
+                 bottom--;}
+                 if(left<=right){
+                    for(int l=bottom; l>=top;l--){
+                        result.push_back(matrix[l][left]);}
+                         left++;}}
+        
+   return result;
+   }
+};

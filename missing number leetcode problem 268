@@ -1,0 +1,14 @@
+// solution to leetcode problem 268 missing number
+//question is of easy level but it introduced me with a new method to solve questions that is using XOR method
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+    int n = nums.size();
+    int x = n;         
+    for (int i = 0; i < n; i++) {
+        x = x ^ i ^nums[i];  
+    }
+    return x;
+}
+};

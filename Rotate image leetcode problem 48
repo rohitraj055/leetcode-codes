@@ -1,0 +1,16 @@
+// solution to the leetcode problem 48 , rotate image 
+// the question was quite simple just uopper limit and defining variable was better part
+
+class Solution {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+         int n= matrix.size();
+vector<vector<int>> other(n, vector<int>(n));
+for (int i = 0; i < n; i++) {
+     for (int j = 0; j < n; j++) {
+         other[j][n-1-i] = matrix[i][j];
+}
+}
+matrix = other;
+    }
+};

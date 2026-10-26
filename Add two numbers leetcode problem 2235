@@ -1,0 +1,10 @@
+// solution to leetcode problem 2235 add two numbers 
+// it is the easiest problem i have visited so far on leetcode
+
+class Solution {
+public:
+    int sum(int num1, int num2) {
+        return num1 + num2;
+        
+    }
+};

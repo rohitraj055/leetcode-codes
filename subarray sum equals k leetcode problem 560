@@ -1,0 +1,18 @@
+// solution to leetcode problem 560 subarray sum equal to k
+// the optimized way has taught me about new stl that is seen 
+
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        unordered_map<int,int> seen;
+      seen[0] =1;
+      int count = 0, prefix = 0;
+       for (int j = 0; j < nums.size(); j++) {
+           prefix += nums[j];
+            count += seen[prefix-k];
+            seen[prefix]++;
+}
+return count;
+        
+    }
+};

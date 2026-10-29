@@ -1,0 +1,23 @@
+// solution to leetcode problem 525 contiguous array 
+// this question taught me a new method for pretecting from tle
+
+class Solution {
+public:
+    int findMaxLength(vector<int>& nums) {
+ unordered_map<int,int> first; 
+first[0] = -1;                  
+int sum = 0, maxLen = 0;
+
+for (int i = 0; i < nums.size(); i++) {
+    sum += (nums[i]==0)? -1:1;              
+
+    if (first.count(sum)) {
+        maxLen = max(maxLen, i - first[sum]);   
+    } else {
+        first[sum] = i;           
+    }
+}
+return maxLen;
+        
+    }
+};

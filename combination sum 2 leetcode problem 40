@@ -1,0 +1,29 @@
+// solution to leetcode problem 40 combination sum 2
+// the question was majorly similar to lc 39 with just a little change that we can't use duplicates 
+
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<int> cands;
+
+    void solve(int start, int remaining, vector<int>& cur) {
+    if (remaining == 0) {
+        ans.push_back(cur);
+        return;
+    }
+    for (int j = start; j < cands.size(); j++) {
+        if (j > start && cands[j] == cands[j-1]) continue;
+            if (cands[j] > remaining) return; 
+        cur.push_back(cands[j]);
+        solve(j+1, remaining - cands[j], cur);   
+        cur.pop_back();
+    }
+}
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+       cands = candidates;
+       sort(cands.begin(), cands.end());
+       vector<int> cur;
+       solve(0, target, cur);
+       return ans;
+    }
+};

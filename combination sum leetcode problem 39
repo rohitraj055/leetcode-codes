@@ -1,0 +1,58 @@
+//solution to leetcode problem 39 combination sum 
+
+//solution 1 with 4ms
+
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<int> cands;
+
+    void solve(int i, int remaining, vector<int>& cur) {
+        if (remaining == 0) {
+        ans.push_back(cur);
+        return;
+    }
+    if (remaining < 0 || i == cands.size()) {
+        return;
+    }
+    cur.push_back(cands[i]);
+    solve(i, remaining - cands[i], cur);
+    cur.pop_back();
+    solve(i + 1, remaining, cur);
+    }
+
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        cands = candidates;
+        vector<int> cur;
+        solve(0, target, cur);
+        return ans;
+    }
+};
+
+//solution 2 and optimized solution with 2ms
+
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<int> cands;
+
+    void solve(int start, int remaining, vector<int>& cur) {
+    if (remaining == 0) {
+        ans.push_back(cur);
+        return;
+    }
+    for (int j = start; j < cands.size(); j++) {
+        if (cands[j] > remaining)  return;  
+        cur.push_back(cands[j]);
+        solve(j, remaining - cands[j], cur);   
+        cur.pop_back();
+    }
+}
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+       cands = candidates;
+       sort(cands.begin(), cands.end());
+       vector<int> cur;
+       solve(0, target, cur);
+       return ans;
+    }
+};

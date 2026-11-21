@@ -1,0 +1,31 @@
+//solution to leetcode problem 17 letter combination of phone number
+//the question felt much easier after solving lc 39 and 40
+//sol 1 with 0ms runtime
+class Solution {
+public:
+    vector<string> ans;
+    vector<string> mp = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    string digs;
+
+    void solve(int idx, string& cur) {
+        if (idx == digs.size()) {
+           ans.push_back(cur);
+            return;
+        }
+       const string& letters = mp[digs[idx] - '0'];
+        for (char c : letters) {
+            cur.push_back(c);
+            solve(idx+1, cur);  
+            cur.pop_back();
+        }
+    }
+
+    vector<string> letterCombinations(string& digits) {
+        if (digits.empty()) return {};
+        digs = digits;
+        string cur;
+        solve(0, cur);
+        return ans;
+    }
+};
+
